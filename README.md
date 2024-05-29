@@ -1,5 +1,12 @@
 # [Q4 Inc.](https://q4inc.com/)
 
+## Developer Notes
+- I used CSS Grid for modern browsers with gradual degradation for older browsers like IE11.
+- Accessibility checks raised an issue with the html lang attribute as empty, so I added "en-US".
+- The exercise said to consider how the page will scale as more reports are added over time. There are several options for this including paginating the results or infinite scrolling.
+
+The page can be viewed at [https://yodiyo.github.io/q4-fed-test/src/](https://yodiyo.github.io/q4-fed-test/src/)
+
 ## Front-end Developer Assessment
 
 Welcome to the front-end developer assessment package.
