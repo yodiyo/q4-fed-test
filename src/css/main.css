@@ -28,17 +28,62 @@
   margin-top: 10px;
   padding: 10px;
   border-radius: 5px;
+  max-width: 280px; /* Image width + left/right 20px */
+  margin-left: auto;
+  margin-right: auto;
 }
 #q4Wrapper .reports {
-  display: -ms-grid; /* fallback for IE11 */
-  -ms-grid-columns: 1fr; /* fallback for IE11 */
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   gap: 30px;
 }
+
 #q4Wrapper article {
   text-align: center;
+  flex: 1 1 auto;
 }
+
+/* Fallback gap for IE11 */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  #q4Wrapper article {
+    margin: 15px;
+  }
+}
+
+@media (min-width: 600px) {
+  #q4Wrapper article {
+    flex: 1 1 calc(50% - 30px); /* Flex for 2 columns with gap */
+  }
+}
+
+@media (min-width: 768px) {
+  #q4Wrapper article {
+    flex: 1 1 calc(33.33% - 30px); /* Flex basis for 3 columns with gap */
+  }
+}
+
+/* Modern browsers can use CSS grid */
+@supports (display: grid) {
+  #q4Wrapper .reports {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+      gap: 30px; /* Adds gutter */
+  }
+
+  @media (min-width: 600px) {
+    #q4Wrapper .reports {
+          grid-template-columns: repeat( 2, 1fr );
+      }
+  }
+
+  @media (min-width: 768px) {
+    #q4Wrapper .reports {
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+  }
+}
+
 #q4Wrapper article img {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
 }
@@ -53,20 +98,6 @@
 }
 #q4Wrapper a span {
   opacity: 0.5;
-}
-
-@media ( min-width: 600px ) {
-  #q4Wrapper .reports {
-    -ms-grid-columns: 1fr 30px 1fr; /* fallback for IE11 */
-    grid-template-columns: repeat( 2, 1fr );
-  }
-}
-@media ( min-width: 769px ) {
-  #q4Wrapper .reports {
-    -ms-grid-columns: 1fr 30px 1fr 30px 1fr; /* fallback for IE11 */
-    grid-template-columns: repeat( 3, 1fr );
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
 }
 
 .layout_inner {
